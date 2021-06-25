@@ -1,9 +1,10 @@
 let apiKey="9c5c5a276f0866ee408fc9ef3901f7ba";
+let city;
 
 let DOMS={
     body: document.querySelector('body'),
     input: document.querySelector('input'),
-    button: document.querySelector('button'),
+    button: document.querySelector('.search-button'),
     location: document.querySelector('.location'),
     temperature: document.querySelector('.temperature'),
     description: document.querySelector('.description'),
@@ -14,8 +15,8 @@ let DOMS={
 };
 //DOMS.button.onclick= function(){this.fetchWeather(DOMS.input.value)};
 DOMS.button.addEventListener("click",()=>{
-    this.fetchWeather(DOMS.input.value)
-    //alert(DOMS.input.value)
+    this.fetchWeather(DOMS.input.value);
+    alert(DOMS.input.value);
 })
 function fetchWeather(city){
     try{
