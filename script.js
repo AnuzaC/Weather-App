@@ -1,5 +1,5 @@
 let apiKey="9c5c5a276f0866ee408fc9ef3901f7ba";
-let city;
+/let city;
 
 let DOMS={
     body: document.querySelector('body'),
