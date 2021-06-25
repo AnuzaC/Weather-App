@@ -1,0 +1,73 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+body{
+    width: 100%;
+    background-image: url('https://source.unsplash.com/1600x900/?nature,water');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Open Sans', sans-serif;
+}
+.flex{
+    display: flex;
+    flex-direction: row;
+}
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+main{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.main-card{
+    width: 40%;
+    background: #000000d0;
+    color: white;
+    padding: 2%;
+    border-radius: 20px;
+    margin-top: 20%;
+}
+.card-top{
+    justify-content: space-around;
+    align-items: center;
+}
+form{
+    width: 60%;
+    margin-top: 2%;
+}
+input[type="text"]{
+    border: 1px solid #f1f3f559;
+    background: #7c7c7c2b;
+    color: white;
+    border-radius: 30px;
+    padding: 3% 8%;
+    font-size: large;
+}
+input[type="text"]:focus{
+    outline: none;
+    border: .5px solid rgba(62, 62, 235, 0.267);
+}
+.fa-search{
+    color: grey;
+    position: absolute;
+    top: 27%;
+    left: 31%;
+    font-size: 16px;
+}
+button{
+    position: relative;
+    border: none;
+    outline: none;
+    background: #7c7c7c2b;
+    color: white;
+    border-radius: 50%;
+    width: 20%;
+    margin-left: 2%;
+    cursor: pointer;
+}
+button:hover{
+    background: #7c7c7c6b;
+}
