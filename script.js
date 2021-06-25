@@ -1,40 +1,43 @@
 let apiKey="9c5c5a276f0866ee408fc9ef3901f7ba";
-
-
-let DOMS={
-    body: document.querySelector('body'),
-    input: document.querySelector('input'),
-    button: document.querySelector('.search-button'),
-    location: document.querySelector('.location'),
-    temperature: document.querySelector('.temperature'),
-    description: document.querySelector('.description'),
-    humidity: document.querySelector('.humidity'),
-    wind: document.querySelector('.wind'),
-    weatherIcon: document.querySelector('#weather-icon'),
-    errorMessage: document.querySelector('.err')
-};
+let body= document.querySelector('body');
+let input= document.querySelector('input');
+let button= document.querySelector('.search-button');
+let location= document.querySelector('.location');
+let temperature= document.querySelector('.temperature');
+let description= document.querySelector('.description');
+let humidity= document.querySelector('.humidity');
+let wind= document.querySelector('.wind');
+let weatherIcon= document.querySelector('#weather-icon');
+let errorMessage= document.querySelector('.err');
+console.log('1')
 //let city= DOMS.input.value;
-//DOMS.button.onclick= function(){this.fetchWeather(DOMS.input.value)};
-DOMS.button.addEventListener("click",()=>{
-    this.fetchWeather(DOMS.input.value);
-    alert(DOMS.input.value);
-})
+//button.onclick= function(){this.fetchWeather(DOMS.input.value)};
+// document.addEventListener('DOMConntentLoader', ()=>{
+    
+// })
+button.addEventListener('click',()=>{
+    console.log('2');
+    fetchWeather();
+    alert(input.value);
+});
 function fetchWeather(){
+    console.log("3")
     try{
+        console.log("4")
         fetch('https://api.openweathermap.org/data/2.5/weather?q='
-        + DOMS.input.value 
+        + input.value 
         +'&units=metric&appid='
         + apiKey)
         .then (response=> response.json())
-        .then(data => this.displayWeather(data));
+        .then(data => displayWeather(data))
     }
 
     catch(err){ 
-        DOMS.errorMessage.innerHTML="City not found";
+        errorMessage.innerHTML="City not found";
     }
 }
-
 function displayWeather(data){
+    console.log("5")
     // const {name} =data;
     // const { description, icon, id} = data.weather[0];
     // const { temp,humidity }= data.main;
@@ -48,36 +51,35 @@ function displayWeather(data){
     const speedValue = data['wind']['speed'];
     const weatherID = data['weather'][0]['id'];
 
-    console.log(nameValue, descriptionValue, iconValue, tempValue,humidityValue, speedValue, weatherID);
+    console.log(nameValue, descriptionValue, iconValue, tempValue, humidityValue, speedValue, weatherID);
 
-    DOMS.location.innerHTML="Weather in "+ nameValue;
-    DOMS.temperature.innerHTML=tempValue+"&deg; C";
-    DOMS.weatherIcon.src='https://openweathermap.org/img/wn/'+ iconValue+'.png';
-    DOMS.description.innerHTML=descriptionValue;
-    DOMS.humidity.innerHTML="Humidity: "+humidityValue+"%";
-    DOMS.wind.innerHTML="Wind Speed: "+speedValue+" km/hr";
+    location.innerHTML="Weather in "+ nameValue;
+    temperature.innerHTML=tempValue+"&deg; C";
+    weatherIcon.src='https://openweathermap.org/img/wn/'+ iconValue+'.png';
+    description.innerHTML=descriptionValue;
+    humidity.innerHTML="Humidity: "+humidityValue+"%";
+    wind.innerHTML="Wind Speed: "+speedValue+" km/hr";
 
     // ------------------Background----------------------
-    
     if (weatherID<250){
-        DOMS.body.style.backgroundImage="url('./img/photo-1519110437047-c6488cf2051d.jpg')";
+        body.style.backgroundImage="url('./img/photo-1519110437047-c6488cf2051d.jpg')";
     }
     else if (weatherID<350){
-        DOMS.body.style.backgroundImage="url('./img/photo-1504608524841-42fe6f032b4b.jpg')";
+        body.style.backgroundImage="url('./img/photo-1504608524841-42fe6f032b4b.jpg')";
     }
     else if (weatherID<550){
-        DOMS.body.style.backgroundImage="url('./img/photo-1532280559594-e64bc3b12f8b.jpg')";
+        body.style.backgroundImage="url('./img/photo-1532280559594-e64bc3b12f8b.jpg')";
     }
     else if (weatherID<650){
-        DOMS.body.style.backgroundImage="url('./img/photo-1486944670663-e0a2ea5018eb.jpg')";
+        body.style.backgroundImage="url('./img/photo-1486944670663-e0a2ea5018eb.jpg')";
     }
     else if (weatherID<850){
-        DOMS.body.style.backgroundImage="url('./img/photo-1606836131166-5cb137786a8d.jpg')";
+        body.style.backgroundImage="url('./img/photo-1606836131166-5cb137786a8d.jpg')";
     }
     else if (weatherID==850){
-        DOMS.body.style.backgroundImage="url('./img/photo-1529348915581-73628f0cf212.jpg')";
+        body.style.backgroundImage="url('./img/photo-1529348915581-73628f0cf212.jpg')";
     }
     else if (weatherID>850){
-        DOMS.body.style.backgroundImage="url('./img/photo-1484383707950-89c8d3276e53.jpg')";
+        body.style.backgroundImage="url('./img/photo-1484383707950-89c8d3276e53.jpg')";
     }
 }
