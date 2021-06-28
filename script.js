@@ -1,43 +1,34 @@
 let apiKey="9c5c5a276f0866ee408fc9ef3901f7ba";
-let body= document.querySelector('body');
-let input= document.querySelector('input');
-let button= document.querySelector('.search-button');
-let location= document.querySelector('.location');
-let temperature= document.querySelector('.temperature');
-let description= document.querySelector('.description');
-let humidity= document.querySelector('.humidity');
-let wind= document.querySelector('.wind');
-let weatherIcon= document.querySelector('#weather-icon');
-let errorMessage= document.querySelector('.err');
+let body= document.querySelector("body");
+let input= document.querySelector("input");
+let button= document.querySelector(".search-button");
+let placeName= document.querySelector(".place-name");
+let temperature= document.querySelector(".temperature");
+let description= document.querySelector(".description");
+let humidity= document.querySelector(".humidity");
+let wind= document.querySelector(".wind");
+let weatherIcon= document.querySelector("#weather-icon");
+let errorMessage= document.querySelector(".err");
 console.log('1')
-//let city= DOMS.input.value;
-//button.onclick= function(){this.fetchWeather(DOMS.input.value)};
-// document.addEventListener('DOMConntentLoader', ()=>{
-    
-// })
-button.addEventListener('click',()=>{
-    console.log('2');
-    fetchWeather();
-    alert(input.value);
-});
+
 function fetchWeather(){
-    console.log("3")
+    console.log("2")
     try{
-        console.log("4")
-        fetch('https://api.openweathermap.org/data/2.5/weather?q='
-        + input.value 
-        +'&units=metric&appid='
-        + apiKey)
+        fetch(
+            "api.openweathermap.org/data/2.5/weather?q="+
+            input.value+
+            "&units=metric&appid="+
+            apiKey
+        )
         .then (response=> response.json())
         .then(data => displayWeather(data))
     }
-
     catch(err){ 
         errorMessage.innerHTML="City not found";
     }
 }
 function displayWeather(data){
-    console.log("5")
+    console.log("4")
     // const {name} =data;
     // const { description, icon, id} = data.weather[0];
     // const { temp,humidity }= data.main;
@@ -53,7 +44,7 @@ function displayWeather(data){
 
     console.log(nameValue, descriptionValue, iconValue, tempValue, humidityValue, speedValue, weatherID);
 
-    location.innerHTML="Weather in "+ nameValue;
+    placeName.innerHTML="Weather in "+ nameValue;
     temperature.innerHTML=tempValue+"&deg; C";
     weatherIcon.src='https://openweathermap.org/img/wn/'+ iconValue+'.png';
     description.innerHTML=descriptionValue;
@@ -83,3 +74,9 @@ function displayWeather(data){
         body.style.backgroundImage="url('./img/photo-1484383707950-89c8d3276e53.jpg')";
     }
 }
+button.addEventListener('click',()=>{
+    console.log('2');
+    fetchWeather();
+    //alert(input.value);
+});
+fetchWeather();
