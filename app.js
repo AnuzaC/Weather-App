@@ -37,7 +37,7 @@ let weather={
 
         console.log(name, description, icon, id, temp,humidity, speed);
 
-        placeName.innerText= "Weather in" + name;
+        placeName.innerText= "Weather in " + name;
         temperature.innerHTML=temp+"&deg; C";
         weatherIcon.src='https://openweathermap.org/img/wn/'+ icon+'.png';
         descriptionContent.innerHTML=description;
