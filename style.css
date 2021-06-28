@@ -9,9 +9,6 @@ body{
     background-size: cover;
     font-family: 'Open Sans', sans-serif;
 }
-img{
-    display: none;
-}
 .flex{
     display: flex;
     flex-direction: row;
@@ -63,7 +60,6 @@ input[type="text"]:focus{
 button{
     position: relative;
     border: none;
-    outline: none;
     background: #7c7c7c2b;
     color: white;
     border-radius: 50%;
